@@ -162,8 +162,8 @@ Submitted from strategystack.com contact form
           },
         ],
         from: {
-          email: 'noreply@strategystackmarketing.com',
-          name: 'Strategy Stack Website',
+          email: 'leads@strategystackai.com',
+          name: 'Strategy Stack AI',
         },
         reply_to: {
           email: formData.email,
