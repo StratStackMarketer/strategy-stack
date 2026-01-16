@@ -162,7 +162,7 @@ Submitted from strategystack.com contact form
           },
         ],
         from: {
-          email: 'leads@strategystackai.com',
+          email: 'russchandler@strategystackmarketing.com',
           name: 'Strategy Stack AI',
         },
         reply_to: {
