@@ -1,0 +1,366 @@
+@import "tailwindcss";
+
+/* Custom Fonts */
+@font-face {
+  font-family: 'Modak';
+  src: url('/fonts/Modak-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Design System Variables */
+@theme {
+  /* Colors - Neo-brutalism palette */
+  --color-primary: #7c3aed;
+  --color-primary-dark: #6d28d9;
+  --color-primary-light: #8b5cf6;
+  --color-secondary: #fbbf24;
+  --color-accent: #22c55e;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  /* Neo-brutalism specific colors */
+  --color-brutal-pink: #ec4899;
+  --color-brutal-cyan: #06b6d4;
+  --color-brutal-orange: #f97316;
+  --color-brutal-red: #ef4444;
+  --color-brutal-indigo: #6366f1;
+
+  /* Typography */
+  --font-heading: 'Modak', 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Shadows - Neo-brutalism offset shadows */
+  --shadow-brutal-sm: 3px 3px 0 var(--color-black);
+  --shadow-brutal-md: 5px 5px 0 var(--color-black);
+  --shadow-brutal-lg: 8px 8px 0 var(--color-black);
+  --shadow-brutal-xl: 12px 12px 0 var(--color-black);
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Animations */
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 30s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Keyframes */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes slide-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Custom Cursor - applies to ALL elements */
+*,
+*::before,
+*::after,
+html,
+body,
+a,
+button,
+input,
+select,
+textarea,
+label,
+[role="button"],
+[onclick],
+[tabindex],
+.cursor-pointer {
+  cursor: url('/images/cursors/cursor-hand.png') 16 4, auto !important;
+}
+
+/* Click state cursor - applied via JavaScript */
+html.cursor-clicking,
+html.cursor-clicking *,
+html.cursor-clicking *::before,
+html.cursor-clicking *::after,
+html.cursor-clicking a,
+html.cursor-clicking button,
+html.cursor-clicking input,
+html.cursor-clicking select,
+html.cursor-clicking textarea,
+html.cursor-clicking label,
+html.cursor-clicking [role="button"],
+html.cursor-clicking [onclick],
+html.cursor-clicking [tabindex],
+html.cursor-clicking .cursor-pointer {
+  cursor: url('/images/cursors/cursor-thumbsup.png') 24 4, auto !important;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Heading styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: normal;
+  line-height: 1.1;
+}
+
+/* Neo-brutalism utility classes */
+.brutal-border {
+  border: 3px solid var(--color-black);
+}
+
+.brutal-shadow-sm {
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+.brutal-shadow-md {
+  box-shadow: var(--shadow-brutal-md);
+}
+
+.brutal-shadow-lg {
+  box-shadow: var(--shadow-brutal-lg);
+}
+
+.brutal-shadow-xl {
+  box-shadow: var(--shadow-brutal-xl);
+}
+
+/* Button base styles */
+.btn-brutal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 3px solid var(--color-black);
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.btn-brutal:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--color-black);
+}
+
+.btn-brutal:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 var(--color-black);
+}
+
+.btn-brutal-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: 4px 4px 0 var(--color-black);
+}
+
+.btn-brutal-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-black);
+  box-shadow: 4px 4px 0 var(--color-black);
+}
+
+.btn-brutal-white {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  box-shadow: 4px 4px 0 var(--color-black);
+}
+
+.btn-brutal-black {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  box-shadow: 4px 4px 0 var(--color-primary);
+}
+
+/* Card base styles */
+.card-brutal {
+  background-color: var(--color-white);
+  border: 3px solid var(--color-black);
+  box-shadow: var(--shadow-brutal-md);
+  transition: all 0.2s ease;
+}
+
+.card-brutal:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 var(--color-black);
+}
+
+/* Section styles */
+.section-full {
+  width: 100%;
+  padding: 5rem 0;
+}
+
+.section-half {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Marquee container */
+.marquee-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-track-reverse {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: marquee-reverse 30s linear infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-500);
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Animation utilities */
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Grid pattern background */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, var(--color-gray-200) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-gray-200) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Dot pattern background */
+.bg-dot-pattern {
+  background-image: radial-gradient(var(--color-gray-300) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-brutal-pink) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Link styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primary);
+}
