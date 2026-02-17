@@ -130,10 +130,16 @@ ${tracking.utmCampaign || '-'}` : ''}\n\nSubmitted from strategystackai.com cont
           name: 'Strategy Stack Website',
           email: 'russ@strategystackmarketing.com',
         },
-        to: [{
-          email: env.CONTACT_EMAIL || 'russchandler@strategystackmarketing.com',
-          name: 'Russ Chandler',
-        }],
+        to: [
+          {
+            email: env.CONTACT_EMAIL || 'russchandler@strategystackmarketing.com',
+            name: 'Russ Chandler',
+          },
+          {
+            email: 'kai@strategystackmarketing.com',
+            name: 'Kai - Strategy Stack',
+          },
+        ],
         replyTo: {
           email: formData.email,
           name: formData.name,
