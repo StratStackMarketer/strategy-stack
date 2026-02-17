@@ -301,7 +301,7 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-white/60">Email</p>
-                  <p className="font-bold text-lg">russchandler@strategystackmarketing.com</p>
+                  <p className="font-bold text-lg">russ@strategystackmarketing.com</p>
                 </div>
               </div>
 

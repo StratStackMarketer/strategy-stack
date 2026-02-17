@@ -135,7 +135,7 @@ You have Organization, LocalBusiness, WebSite, and Service schemas. **Improvemen
   "image": "https://strategystackai.com/images/logo-full.png",
   "url": "https://strategystackai.com",
   "telephone": "+1-317-273-3916",
-  "email": "russchandler@strategystackmarketing.com",
+  "email": "russ@strategystackmarketing.com",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "", 

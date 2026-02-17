@@ -132,7 +132,7 @@ ${tracking.utmCampaign || '-'}` : ''}\n\nSubmitted from strategystackai.com cont
         },
         to: [
           {
-            email: env.CONTACT_EMAIL || 'russchandler@strategystackmarketing.com',
+            email: env.CONTACT_EMAIL || 'russ@strategystackmarketing.com',
             name: 'Russ Chandler',
           },
           {

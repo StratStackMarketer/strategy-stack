@@ -53,7 +53,7 @@ This directory contains key Strategy Stack business documents pulled from Notion
 
 ### Contact
 - **Phone:** (317) 273-3916
-- **Email:** russchandler@strategystackmarketing.com
+- **Email:** russ@strategystackmarketing.com
 - **Website:** https://strategystackai.com
 
 ---

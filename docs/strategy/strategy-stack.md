@@ -20,7 +20,7 @@ Strategy Stack Marketing Agency is the central hub for business operations, clie
 ## Business Details
 
 - **Website:** https://strategystackai.com
-- **Contact:** (317) 273-3916 / russchandler@strategystackmarketing.com
+- **Contact:** (317) 273-3916 / russ@strategystackmarketing.com
 
 ## Pricing Tiers
 
