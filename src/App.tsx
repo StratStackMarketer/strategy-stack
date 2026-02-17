@@ -1,17 +1,27 @@
 import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Header, Footer } from './components/layout';
 import {
-  Hero,
-  Problem,
-  Solution,
-  Results,
-  Testimonials,
-  Projects,
-  Pricing,
-  Contact,
-} from './components/sections';
+  HomePage,
+  HomeServicesPage,
+  PropertyManagementPage,
+  AutomotivePage,
+  RetailPage,
+  SaasStartupsPage,
+} from './pages';
 
-function App() {
+// Scroll to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+function AppContent() {
   // Custom cursor click handler - shows thumbs up on click
   useEffect(() => {
     const handleMouseDown = () => {
@@ -33,19 +43,30 @@ function App() {
 
   return (
     <div className="min-h-screen">
+      <ScrollToTop />
       <Header />
       <main>
-        <Hero />
-        <Problem />
-        <Solution />
-        <Results />
-        <Testimonials />
-        <Projects />
-        <Pricing />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home-services" element={<HomeServicesPage />} />
+          <Route path="/property-management" element={<PropertyManagementPage />} />
+          <Route path="/automotive" element={<AutomotivePage />} />
+          <Route path="/retail" element={<RetailPage />} />
+          <Route path="/saas-startups" element={<SaasStartupsPage />} />
+          {/* Pricing page will be added later */}
+          {/* <Route path="/pricing" element={<PricingPage />} /> */}
+        </Routes>
       </main>
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 

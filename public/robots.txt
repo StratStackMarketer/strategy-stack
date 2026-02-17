@@ -1,0 +1,15 @@
+# Strategy Stack - Robots.txt
+# https://strategystackai.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://strategystackai.com/sitemap.xml
+
+# Block common paths that shouldn't be indexed
+Disallow: /api/
+Disallow: /_*
+
+# Crawl-delay for politeness
+Crawl-delay: 1

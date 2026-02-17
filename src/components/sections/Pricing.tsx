@@ -155,7 +155,7 @@ export function Pricing() {
               key={index}
               variants={itemVariants}
               whileHover={{ y: -10, transition: { duration: 0.2 } }}
-              className={`relative card-brutal p-8 ${
+              className={`relative card-brutal p-8 flex flex-col ${
                 tier.popular ? 'border-primary border-4 scale-105' : ''
               }`}
             >
@@ -185,7 +185,7 @@ export function Pricing() {
               <p className="text-gray-600 mb-6">{tier.description}</p>
 
               {/* Features */}
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8 flex-grow">
                 {tier.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
@@ -197,7 +197,7 @@ export function Pricing() {
               {/* CTA Button */}
               <a
                 href="#contact"
-                className={`block text-center py-3 px-6 font-bold border-3 border-black transition-all ${
+                className={`block text-center py-3 px-6 font-bold border-3 border-black transition-all mt-auto ${
                   tier.popular
                     ? 'bg-primary text-white hover:bg-primary/90 brutal-shadow-sm hover:brutal-shadow'
                     : 'bg-white hover:bg-gray-50 brutal-shadow-sm hover:brutal-shadow'
