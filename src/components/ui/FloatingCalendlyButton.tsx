@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-// GHL Booking Link (updated 2026-03-22)
-const GHL_BOOKING_URL = 'https://api.leadconnectorhq.com/widget/booking/ZT8D6L3akJS9CvqkhtIk';
+// GHL Group Booking Link - supports 30/60 min meeting options (updated 2026-03-22 14:26)
+const GHL_BOOKING_URL = 'https://api.leadconnectorhq.com/widget/group/Lv7qShWMBSXKHjYDidtu';
 
 export function FloatingCalendlyButton() {
   const [isVisible, setIsVisible] = useState(false);
