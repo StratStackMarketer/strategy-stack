@@ -1,15 +1,7 @@
 import { useEffect, useState } from 'react';
 
-// Declare Calendly on window for TypeScript
-declare global {
-  interface Window {
-    Calendly?: {
-      initPopupWidget: (options: { url: string }) => void;
-    };
-  }
-}
-
-const CALENDLY_URL = 'https://calendly.com/russ-strategystackmarketing';
+// GHL Booking Link (updated 2026-03-22)
+const GHL_BOOKING_URL = 'https://api.leadconnectorhq.com/widget/booking/ZT8D6L3akJS9CvqkhtIk';
 
 export function FloatingCalendlyButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -34,12 +26,8 @@ export function FloatingCalendlyButton() {
   }, []);
 
   const handleClick = () => {
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({ url: CALENDLY_URL });
-    } else {
-      // Fallback: open in new tab if script failed to load
-      window.open(CALENDLY_URL, '_blank');
-    }
+    // Open GHL booking page in new tab
+    window.open(GHL_BOOKING_URL, '_blank');
   };
 
   return (
