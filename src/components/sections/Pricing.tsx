@@ -64,12 +64,12 @@ const tiers = [
 ];
 
 const addon = [
+  { name: 'Sales Engine Foundation', price: '$199/mo', description: 'CRM, Smart Booking, & Lead Speed' },
+  { name: 'Sales Engine Automation', price: '$399/mo', description: 'GHL Automation, Review Requests, & Pipelines' },
+  { name: 'Sales Engine Excellence', price: '$599/mo', description: 'Advanced Scoring, White-Label, & Deep BI' },
   { name: 'Website Design/Redesign', price: 'From $299', description: 'Modified template to completely custom' },
-  { name: 'Landing Page', price: 'From $99/page', description: 'High-converting campaign pages' },
   { name: 'Done For You AI Agent Creation', price: 'From $199', description: 'Generalist or specialized' },
   { name: 'Done For You Process Automation', price: 'From $299', description: 'Marketing, Sales, or Ops' },
-  { name: 'Google Business Profile Optimization', price: 'From $299', description: 'Single 30 day project or reocurring' },
-  { name: 'Social Media Manager', price: 'From $250', description: 'Single 30 day project or reocurring' },
 ];
 
 const containerVariants = {
