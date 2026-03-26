@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 // GHL Group Booking Link - supports 30/60 min meeting options (updated 2026-03-22 14:43)
 const GHL_BOOKING_URL = 'https://api.leadconnectorhq.com/widget/group/Lv7qShWMBSXKHjYDidtu';
 
-export function FloatingCalendlyButton() {
+export function FloatingBookingButton() {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -174,4 +174,4 @@ export function FloatingCalendlyButton() {
   );
 }
 
-export default FloatingCalendlyButton;
+export default FloatingBookingButton;

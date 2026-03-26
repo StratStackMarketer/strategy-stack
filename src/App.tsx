@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Header, Footer } from './components/layout';
-import { FloatingCalendlyButton } from './components/ui';
+import { FloatingBookingButton } from './components/ui';
 import {
   HomePage,
   HomeServicesPage,
@@ -46,7 +46,7 @@ function AppContent() {
     <div className="min-h-screen">
       <ScrollToTop />
       <Header />
-      <FloatingCalendlyButton />
+      <FloatingBookingButton />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
