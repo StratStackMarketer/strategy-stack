@@ -160,10 +160,9 @@ export function FloatingBookingButton() {
                   width: '100%',
                   height: '100%',
                   border: 'none',
-                  overflow: 'hidden',
-                  minHeight: '500px',
+                  minHeight: '600px',
                 }}
-                scrolling="no"
+                scrolling="yes"
                 title="Book a meeting"
               />
             </div>
