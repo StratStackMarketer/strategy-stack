@@ -126,7 +126,7 @@ export function FloatingBookingButton() {
           {/* Modal Container */}
           <div
             ref={modalRef}
-            className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[95vh] overflow-hidden flex flex-col"
+            className="bg-white rounded-lg shadow-xl w-full max-w-4xl h-[95vh] overflow-hidden flex flex-col"
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between p-3 sm:p-4 border-b border-gray-200">
@@ -160,7 +160,7 @@ export function FloatingBookingButton() {
                   width: '100%',
                   height: '100%',
                   border: 'none',
-                  minHeight: '650px',
+                  minHeight: '700px',
                 }}
                 scrolling="yes"
                 title="Book a meeting"
