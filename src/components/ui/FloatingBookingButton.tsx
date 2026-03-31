@@ -122,15 +122,15 @@ export function FloatingBookingButton() {
 
       {/* Modal Overlay */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-[9998] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[9998] bg-black/50 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
           {/* Modal Container */}
           <div
             ref={modalRef}
-            className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col"
+            className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[95vh] overflow-hidden flex flex-col"
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Schedule a Call</h2>
+            <div className="flex items-center justify-between p-3 sm:p-4 border-b border-gray-200">
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900">Schedule a Call</h2>
               <button
                 onClick={() => setIsModalOpen(false)}
                 aria-label="Close modal"
@@ -160,7 +160,7 @@ export function FloatingBookingButton() {
                   width: '100%',
                   height: '100%',
                   border: 'none',
-                  minHeight: '600px',
+                  minHeight: '650px',
                 }}
                 scrolling="yes"
                 title="Book a meeting"
