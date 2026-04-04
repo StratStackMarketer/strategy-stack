@@ -127,6 +127,14 @@ export function Header() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
             </Link>
 
+            <Link
+              to="/30-day-blitz"
+              className="font-bold text-sm uppercase tracking-wide hover:text-yellow-500 transition-colors relative group text-yellow-600"
+            >
+              30-Day Blitz
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 transition-all duration-300 group-hover:w-full" />
+            </Link>
+
             <a
               href="#contact"
               className="font-bold text-sm uppercase tracking-wide hover:text-primary transition-colors relative group"
@@ -192,6 +200,13 @@ export function Header() {
                   className="font-bold text-lg uppercase tracking-wide py-2 border-b-2 border-gray-200"
                 >
                   Pricing
+                </Link>
+
+                <Link
+                  to="/30-day-blitz"
+                  className="font-bold text-lg uppercase tracking-wide py-2 border-b-2 border-gray-200 text-yellow-600"
+                >
+                  30-Day Blitz
                 </Link>
 
                 <a

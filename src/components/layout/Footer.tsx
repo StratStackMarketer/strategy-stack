@@ -150,10 +150,10 @@ export function Footer() {
               © {new Date().getFullYear()} Strategy Stack. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
-              <a href="#" className="text-gray-500 hover:text-white text-[10px] transition-colors">
+              <a href="/privacy" className="text-gray-500 hover:text-white text-[10px] transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-500 hover:text-white text-[10px] transition-colors">
+              <a href="/terms" className="text-gray-500 hover:text-white text-[10px] transition-colors">
                 Terms of Service
               </a>
               <button

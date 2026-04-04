@@ -9,6 +9,10 @@ import {
   AutomotivePage,
   RetailPage,
   SaasStartupsPage,
+  PrivacyPage,
+  TermsPage,
+  PricingPage,
+  BoosterPackPage,
 } from './pages';
 
 // Scroll to top on route change
@@ -55,8 +59,10 @@ function AppContent() {
           <Route path="/automotive" element={<AutomotivePage />} />
           <Route path="/retail" element={<RetailPage />} />
           <Route path="/saas-startups" element={<SaasStartupsPage />} />
-          {/* Pricing page will be added later */}
-          {/* <Route path="/pricing" element={<PricingPage />} /> */}
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/30-day-blitz" element={<BoosterPackPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
         </Routes>
       </main>
       <Footer />

@@ -36,6 +36,7 @@ export function Contact() {
     business: '',
     service: '',
     message: '',
+    smsOptIn: false,
   });
   const [trackingData, setTrackingData] = useState<TrackingData | null>(null);
 
@@ -47,7 +48,9 @@ export function Contact() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const target = e.target as HTMLInputElement;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    setFormData({ ...formData, [e.target.name]: value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -78,6 +81,7 @@ export function Contact() {
         business: '',
         service: '',
         message: '',
+        smsOptIn: false,
       });
     } catch (error) {
       setStatus('error');
@@ -228,6 +232,20 @@ export function Contact() {
                   className="w-full px-4 py-3 border-2 border-black focus:border-primary focus:outline-none transition-colors resize-none"
                   placeholder="What's not working? What have you tried? What are your goals?"
                 />
+              </div>
+
+              <div className="flex items-start gap-3 p-4 bg-gray-50 border-2 border-black/10">
+                <input
+                  type="checkbox"
+                  name="smsOptIn"
+                  id="smsOptIn"
+                  checked={formData.smsOptIn}
+                  onChange={handleChange}
+                  className="mt-1 h-5 w-5 accent-primary border-2 border-black"
+                />
+                <label htmlFor="smsOptIn" className="text-xs text-gray-600 leading-relaxed">
+                  By checking this box, I consent to receive SMS text messages from Strategy Stack Marketing for marketing and operational purposes. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe, HELP for help. View our <a href="/privacy" className="underline font-bold text-black">Privacy Policy</a> and <a href="/terms" className="underline font-bold text-black">Terms of Service</a>.
+                </label>
               </div>
 
               <button

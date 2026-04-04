@@ -5,3 +5,7 @@ export { AutomotivePage } from './AutomotivePage';
 export { RetailPage } from './RetailPage';
 export { SaasStartupsPage } from './SaasStartupsPage';
 export { VerticalPage } from './VerticalPage';
+export { PrivacyPage } from './PrivacyPage';
+export { TermsPage } from './TermsPage';
+export { PricingPage } from './PricingPage';
+export { BoosterPackPage } from './BoosterPackPage';
