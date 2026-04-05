@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Zap, DollarSign, Target, Shield } from 'lucide-react';
+import { trackCTA } from '@/lib/analytics';
 import { AnimatedGrid } from '../components/ui/AnimatedGrid';
 import { CloudGraphics } from '../components/ui/CloudGraphics';
 import { IndustriesShowcase } from '../components/sections/IndustriesShowcase';
@@ -113,11 +114,19 @@ function HomeHero() {
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#experience" className="btn-brutal btn-brutal-primary text-lg px-8 py-4">
+            <a 
+              href="#experience" 
+              onClick={() => trackCTA('Hero - See Our Approach', 'Home Hero')}
+              className="btn-brutal btn-brutal-primary text-lg px-8 py-4"
+            >
               See Our Approach
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
-            <a href="/pricing" className="btn-brutal btn-brutal-white text-lg px-8 py-4">
+            <a 
+              href="/pricing" 
+              onClick={() => trackCTA('Hero - View Pricing', 'Home Hero')}
+              className="btn-brutal btn-brutal-white text-lg px-8 py-4"
+            >
               View Pricing
             </a>
           </motion.div>

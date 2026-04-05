@@ -1,6 +1,13 @@
 import { Check, Zap, Shield, Users } from 'lucide-react';
+import { trackCTA } from '@/lib/analytics';
 
 export function PricingPage() {
+  const handleBooking = (plan: string) => {
+    trackCTA(`Get Started - ${plan}`, 'Pricing Page');
+    // Open GHL booking link
+    window.open('https://api.leadconnectorhq.com/widget/group/Lv7qShWMBSXKHjYDidtu', '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
@@ -63,7 +70,10 @@ export function PricingPage() {
                 </ul>
               </div>
 
-              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+              <button 
+                onClick={() => handleBooking('Starter')}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+              >
                 Get Started
               </button>
             </div>
@@ -116,7 +126,10 @@ export function PricingPage() {
                 </ul>
               </div>
 
-              <button className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 px-6 rounded-lg transition-colors">
+              <button 
+                onClick={() => handleBooking('Growth')}
+                className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 px-6 rounded-lg transition-colors"
+              >
                 Start Free Trial
               </button>
             </div>
@@ -166,7 +179,10 @@ export function PricingPage() {
                 </ul>
               </div>
 
-              <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+              <button 
+                onClick={() => handleBooking('Scale')}
+                className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+              >
                 Request Demo
               </button>
             </div>
@@ -230,9 +246,15 @@ export function PricingPage() {
           <p className="text-lg text-gray-200 mb-8">
             Let's discuss which package is right for your business. No pressure. Just honest conversation about growth.
           </p>
-          <button className="bg-white hover:bg-gray-100 text-purple-900 font-semibold py-4 px-8 rounded-lg text-lg transition-colors">
-            Book a Consultation
-          </button>
+            <button 
+              onClick={() => {
+                trackCTA('Book Consultation - Bottom', 'Pricing Page');
+                window.open('https://api.leadconnectorhq.com/widget/group/Lv7qShWMBSXKHjYDidtu', '_blank');
+              }}
+              className="bg-white hover:bg-gray-100 text-purple-900 font-semibold py-4 px-8 rounded-lg text-lg transition-colors"
+            >
+              Book a Consultation
+            </button>
         </div>
       </section>
     </div>

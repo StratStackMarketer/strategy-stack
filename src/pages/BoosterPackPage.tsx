@@ -1,6 +1,12 @@
 import { Rocket, Target, TrendingUp, Clock, CheckCircle, Users, Zap, Trophy } from 'lucide-react';
+import { trackCTA } from '@/lib/analytics';
 
 export function BoosterPackPage() {
+  const handleBooking = () => {
+    trackCTA('Start 30-Day Blitz', 'Booster Pack Page');
+    window.open('https://api.leadconnectorhq.com/widget/group/Lv7qShWMBSXKHjYDidtu', '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
@@ -28,7 +34,10 @@ export function BoosterPackPage() {
             <p className="text-black font-semibold">One-time investment. 30 days. Real momentum.</p>
           </div>
 
-          <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-8 rounded-lg text-lg transition-colors">
+          <button 
+            onClick={handleBooking}
+            className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-8 rounded-lg text-lg transition-colors"
+          >
             Start Your 30-Day Blitz
           </button>
         </div>
@@ -330,7 +339,10 @@ export function BoosterPackPage() {
           <p className="text-xl text-gray-300 mb-8">
             30 days. Intensive focus. Measurable momentum. Let's go.
           </p>
-          <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-10 rounded-lg text-lg transition-colors">
+          <button 
+            onClick={handleBooking}
+            className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-10 rounded-lg text-lg transition-colors"
+          >
             Start Your 30-Day Blitz Now
           </button>
           <p className="text-gray-400 mt-6">
