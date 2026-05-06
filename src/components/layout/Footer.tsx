@@ -10,11 +10,11 @@ const footerLinks = {
     { label: 'Content Marketing', href: '#' },
   ],
   industries: [
-    { label: 'Roofing', href: '#' },
-    { label: 'HVAC', href: '#' },
-    { label: 'Plumbing', href: '#' },
-    { label: 'Electrical', href: '#' },
-    { label: 'Landscaping', href: '#' },
+    { label: 'Home Services', href: '/home-services' },
+    { label: 'Property Management', href: '/property-management' },
+    { label: 'Automotive', href: '/automotive' },
+    { label: 'Retail', href: '/retail' },
+    { label: 'SaaS Startups', href: '/saas-startups' },
   ],
   company: [
     { label: 'About Us', href: '#' },
@@ -56,7 +56,7 @@ export function Footer() {
                 className="h-12 mb-6 brightness-0 invert"
               />
               <p className="text-gray-400 text-[11px] mb-6 max-w-sm">
-                AI-powered marketing for Indianapolis home service businesses.
+                AI-powered marketing for businesses with high-consideration buyers. Home Services, Property Management, Automotive, Retail & SaaS.
                 Premium results at prices that make sense.
               </p>
               <div className="flex gap-4">

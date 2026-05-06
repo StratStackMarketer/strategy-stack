@@ -198,7 +198,7 @@ export function Testimonials() {
             Don't Just Take Our Word For It
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Hear from contractors, installers, maintenance and repair pros, landscapers, painters, carpet layers, bug sprayers, and more, aaand more, Home Service businesses just like yours 
+            Hear from home services companies, property managers, dealerships, retailers, and founders who stopped settling for agencies that don't understand their business.
           </p>
         </motion.div>
       </div>

@@ -195,7 +195,7 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border-2 border-black focus:border-primary focus:outline-none transition-colors"
-                    placeholder="ABC Roofing"
+                    placeholder="Your Company Name"
                   />
                 </div>
               </div>
