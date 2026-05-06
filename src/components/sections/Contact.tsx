@@ -201,24 +201,22 @@ export function Contact() {
               </div>
 
               <div>
-                <label className="block text-sm font-bold mb-1">What service are you in?</label>
+                <label className="block text-sm font-bold mb-1">I'm interested in...</label>
                 <select
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border-2 border-black focus:border-primary focus:outline-none transition-colors bg-white"
                 >
-                  <option value="">Select your industry...</option>
-                  <option value="roofing">Roofing</option>
-                  <option value="hvac">HVAC</option>
-                  <option value="plumbing">Plumbing</option>
-                  <option value="electrical">Electrical</option>
-                  <option value="landscaping">Landscaping</option>
-                  <option value="painting">Painting</option>
-                  <option value="cleaning">Cleaning Services</option>
-                  <option value="pest">Pest Control</option>
-                  <option value="garage">Garage Doors</option>
-                  <option value="other">Other Home Service</option>
+                  <option value="">Select an option...</option>
+                  <option value="free-audit">Free Marketing Audit Report</option>
+                  <option value="free-consultation">Free Consultation</option>
+                  <option value="30-day-blitz">30-Day Blitz</option>
+                  <option value="booster-packs">Booster Packs</option>
+                  <option value="project-quote">Project Quote</option>
+                  <option value="partnership">Partnership</option>
+                  <option value="learn-more">Learn More</option>
+                  <option value="other">Other</option>
                 </select>
               </div>
 
@@ -358,7 +356,7 @@ export function Contact() {
                 </li>
                 <li className="flex items-start gap-2">
                   <ArrowRight className="h-4 w-4 mt-1 text-secondary flex-shrink-0" />
-                  <span>We work exclusively with home services</span>
+                  <span>We work across Home Services, Property Management, Automotive, Retail & SaaS</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <ArrowRight className="h-4 w-4 mt-1 text-secondary flex-shrink-0" />
