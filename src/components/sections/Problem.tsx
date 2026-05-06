@@ -94,7 +94,7 @@ export function Problem() {
             Sick of the Same Misaligned, Outdated and Overpriced Options?
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            You're not alone. Home service businesses across the industry are fed up with the same old providers and service contracts.
+            You're not alone. Businesses across every industry are fed up with the same old providers, broken promises, and agencies that don't understand their market.
           </p>
         </motion.div>
 

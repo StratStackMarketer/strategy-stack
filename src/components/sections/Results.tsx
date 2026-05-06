@@ -9,7 +9,7 @@ const metrics = [
   {
     number: '347%',
     label: 'Average ROI Increase',
-    description: 'Across all home service clients in first 90 days',
+    description: 'Across clients in their first 90 days',
     color: 'bg-green-400',
   },
   {
@@ -33,23 +33,23 @@ const clientWins = [
   },
   {
     icon: Users,
-    text: 'HVAC business reduced cost-per-acquisition by 54%',
+    text: 'Property management firm cut vacancy time from 3 weeks to 8 days',
   },
   {
     icon: Phone,
-    text: 'Plumber doubled phone calls while cutting ad spend by 30%',
+    text: 'Auto dealership service bay appointments up 40% in month two',
   },
   {
     icon: Star,
-    text: 'Landscaper hit #1 Google Maps ranking in 8 weeks',
+    text: 'Retail boutique grew online revenue 3x after targeted campaign buildout',
   },
   {
     icon: Award,
-    text: 'Electrician generated $180K in new contracts from single campaign',
+    text: 'HVAC business reduced cost-per-acquisition by 54%',
   },
   {
     icon: Rocket,
-    text: 'Pest control company scaled from 2 to 5 trucks with our marketing',
+    text: 'Early-stage SaaS cut CAC by 38% with AI-driven content and nurture',
   },
 ];
 

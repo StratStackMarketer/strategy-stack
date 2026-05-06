@@ -209,7 +209,7 @@ export function BoosterPackPage() {
             <ul className="space-y-4">
               <li className="flex items-start text-gray-300">
                 <Rocket className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0 mt-0.5" />
-                <span><strong>HVAC Company:</strong> 18 leads, 4 jobs closed ($12k revenue)</span>
+                <span><strong>Home Services client:</strong> 18 leads, 4 jobs closed ($12k revenue)</span>
               </li>
               <li className="flex items-start text-gray-300">
                 <Rocket className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0 mt-0.5" />

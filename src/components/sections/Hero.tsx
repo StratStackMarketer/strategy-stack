@@ -86,7 +86,7 @@ export function Hero() {
         >
           <motion.div variants={itemVariants} className="mb-6">
             <span className="inline-block px-4 py-2 bg-secondary border-3 border-black brutal-shadow-sm font-bold text-sm uppercase tracking-wider">
-            Professional Home Services Marketing
+            AI-Powered Marketing for High-Consideration Businesses
             </span>
           </motion.div>
 
