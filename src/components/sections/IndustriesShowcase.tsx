@@ -96,6 +96,20 @@ const itemVariants = {
       ease: [0.22, 1, 0.36, 1] as const,
     },
   },
+  hover: {
+    y: -8,
+    transition: { duration: 0.2 },
+  },
+};
+
+// Background fill that scales up from bottom on hover
+const bgFillVariants = {
+  hidden: { scaleY: 0 },
+  visible: { scaleY: 0 },
+  hover: {
+    scaleY: 1,
+    transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] as const },
+  },
 };
 
 export function IndustriesShowcase() {
@@ -153,28 +167,38 @@ export function IndustriesShowcase() {
               <motion.div
                 key={industry.id}
                 variants={itemVariants}
-                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                whileHover="hover"
               >
                 <Link 
                   to={industry.path}
-                  className={`block card-brutal bg-white text-black p-6 h-full transition-colors ${industry.hoverColor}`}
+                  className="block card-brutal bg-white text-black p-6 h-full relative overflow-hidden"
                 >
-                  {/* Colored top bar */}
-                  <div className={`w-full h-2 ${industry.color} -mx-6 -mt-6 mb-4`} style={{ width: 'calc(100% + 3rem)' }} />
-                  
-                  {/* Icon */}
-                  <div className={`inline-flex p-3 ${industry.color} border-3 border-black brutal-shadow-sm mb-4`}>
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  
-                  {/* Content */}
-                  <h3 className="text-xl font-bold mb-1">{industry.name}</h3>
-                  <p className="text-sm text-gray-500 uppercase tracking-wide mb-3">{industry.tagline}</p>
-                  <p className="text-gray-600 mb-4">{industry.description}</p>
-                  
-                  {/* Arrow */}
-                  <div className="flex items-center text-primary font-bold text-sm">
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                  {/* Color fill — scales up from bottom on hover */}
+                  <motion.div
+                    variants={bgFillVariants}
+                    className={`absolute inset-0 ${industry.color}`}
+                    style={{ transformOrigin: 'bottom' }}
+                  />
+
+                  {/* Content sits above fill */}
+                  <div className="relative z-10">
+                    {/* Colored top bar */}
+                    <div className={`w-full h-2 ${industry.color} -mx-6 -mt-6 mb-4`} style={{ width: 'calc(100% + 3rem)' }} />
+                    
+                    {/* Icon */}
+                    <div className={`inline-flex p-3 ${industry.color} border-3 border-black brutal-shadow-sm mb-4`}>
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    
+                    {/* Label always visible in brand purple */}
+                    <h3 className="text-xl font-bold mb-1 text-primary">{industry.name}</h3>
+                    <p className="text-sm text-gray-500 uppercase tracking-wide mb-3">{industry.tagline}</p>
+                    <p className="text-gray-600 mb-4">{industry.description}</p>
+                    
+                    {/* Arrow */}
+                    <div className="flex items-center text-primary font-bold text-sm">
+                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                    </div>
                   </div>
                 </Link>
               </motion.div>

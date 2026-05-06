@@ -18,8 +18,8 @@ const differentiators = [
   },
   {
     icon: Target,
-    title: 'Home Services Experts',
-    description: 'Indianapolis specialists who know roofing, HVAC, plumbing—your business, your market.',
+    title: 'Industry Experts',
+    description: 'Deep experience across Home Services, Property Management, Automotive, Retail & SaaS—we know your market.',
     color: 'bg-cyan-400',
   },
   {

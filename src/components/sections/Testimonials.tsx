@@ -2,13 +2,13 @@ import { motion } from 'framer-motion';
 import { NeoBrutalistDecor } from '../ui/NeoBrutalistDecor';
 
 const testimonialRows = [
-  // Row 1 - Client testimonials
+  // Row 1
   [
     {
-      quote: "They aren't the only agency who has industry experience but they've been the only ones who felt like a partner",
-      author: "Mike R.",
-      company: "Reliable Roofing Co.",
-      avatar: "🏠",
+      quote: "We manage 300+ units. Finding an agency that understands occupancy rates vs. vanity metrics was half the battle. These guys get it.",
+      author: "Maria L.",
+      company: "Summit Property Group",
+      avatar: "🏢",
     },
     {
       quote: "Cut our lead cost in half after just buying a single payment service package",
@@ -17,58 +17,58 @@ const testimonialRows = [
       avatar: "❄️",
     },
     {
-      quote: "These guys like to email and text a ton but when I called, they picked right up.",
+      quote: "These guys actually understand dealership economics. Service bay appointments are up 40% since month two.",
       author: "James K.",
-      company: "ProFlow Plumbing",
-      avatar: "🔧",
+      company: "Metro Auto Group",
+      avatar: "🚗",
     },
     {
       quote: "Went from page 3 to #2 on Google in 6 weeks. Our phone hasn't stopped ringing.",
       author: "David M.",
-      company: "Clean Green Lawns",
-      avatar: "🌿",
-    },
-    {
-      quote: "No contracts, no BS, and they let me customize my own service package",
-      author: "Chris P.",
-      company: "Spark Electric",
+      company: "Premier Electrical",
       avatar: "⚡",
     },
+    {
+      quote: "No contracts, no BS, and I could customize my package. At $495/mo it costs less than a single sponsored LinkedIn post.",
+      author: "Chris P.",
+      company: "Stackflow",
+      avatar: "🚀",
+    },
   ],
-  // Row 2 - More testimonials (reverse direction)
+  // Row 2
   [
     {
-      quote: "First agency that didn't make me feel like an ATM. They actually care about acheiving ROI.",
+      quote: "First agency that didn't make me feel like an ATM. Our average leasing velocity went from 3 weeks to under 10 days.",
       author: "Tom H.",
-      company: "Dunn Windows",
-      avatar: "🪟",
+      company: "Greenfield Residential",
+      avatar: "🏢",
     },
     {
-      quote: "The AI stuff sounded gimmicky but holy crap it works. 3x leads in month one.",
+      quote: "The AI stuff sounded gimmicky but holy crap it works. 3x the leads in month one.",
       author: "Lisa M.",
       company: "So Fresh'N'Clean",
       avatar: "✨",
     },
     {
-      quote: "They built us a website that actually converts. Not just pretty—profitable.",
+      quote: "They built us campaigns that fill our service bays consistently—not random spikes, actual predictable volume.",
       author: "Kevin B.",
-      company: "AAA Foundation Concrete",
-      avatar: "🏗️",
+      company: "Precision Auto Center",
+      avatar: "🔧",
     },
     {
-      quote: "I didn't have to join a single meeting but received constant updates on the work",
+      quote: "I didn't have to join a single meeting but received constant updates on the work. They just get stuff done.",
       author: "Angela R.",
-      company: "Good & Gone Pest Services",
-      avatar: "🐜",
+      company: "The Boutique House",
+      avatar: "🛍️",
     },
     {
-      quote: "The performance guarantee isn't marketing fluff. They actually honored it with a free month of service",
+      quote: "The performance guarantee isn't marketing fluff. They actually honored it with a free month of work.",
       author: "Steve L.",
-      company: "Elite Garage Doors and Floors",
-      avatar: "🚗",
+      company: "Elite Garage Doors",
+      avatar: "🏠",
     },
   ],
-  // Row 3 - Trust badges and accolades
+  // Row 3
   [
     {
       quote: "Best marketing investment we've made in 15 years of business.",
@@ -77,25 +77,25 @@ const testimonialRows = [
       avatar: "🔥",
     },
     {
-      quote: "They speak contractor, not marketing mumbo jumbo. Refreshing as hell.",
+      quote: "They speak business owner, not marketing mumbo jumbo. Refreshing as hell.",
       author: "Dan W.",
       company: "Clean Line Painting",
       avatar: "🎨",
     },
     {
-      quote: "Hired them for SEO, stayed for everything else. Full marketing team at freelancer prices.",
+      quote: "Hired them for content, stayed for everything else. Full marketing function at a fraction of what we'd pay a single in-house hire.",
       author: "Maria S.",
-      company: "Mothers Spotless Maid Service",
-      avatar: "🧹",
+      company: "Launchpad Analytics",
+      avatar: "💡",
     },
     {
-      quote: "Finally someone who gets that my busy season is different from everyone else's.",
+      quote: "Finally competing on digital with stores 10x our size. Foot traffic up 25% in 60 days.",
       author: "Jeff C.",
-      company: "Blown Clean Leaf & Lawn",
-      avatar: "🍂",
+      company: "Cornerstone Hardware",
+      avatar: "🛍️",
     },
     {
-      quote: "The audits alone are worth it. I actually know what's happening with my marketing. Good and Bad.",
+      quote: "The audits alone are worth it. I actually know what's happening with my marketing now. Good and bad.",
       author: "Nicole P.",
       company: "Picture Perfect Pools",
       avatar: "🏊",
