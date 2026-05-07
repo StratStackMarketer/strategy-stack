@@ -14,6 +14,9 @@ import {
   PricingPage,
   BoosterPackPage,
 } from './pages';
+import { AuditsPage } from './pages/AuditsPage';
+import { AIAutomationPage } from './pages/AIAutomationPage';
+import { WhatToExpectPage } from './pages/WhatToExpectPage';
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -63,6 +66,9 @@ function AppContent() {
           <Route path="/30-day-blitz" element={<BoosterPackPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/terms" element={<TermsPage />} />
+          <Route path="/how-it-works/audits" element={<AuditsPage />} />
+          <Route path="/how-it-works/ai-automation" element={<AIAutomationPage />} />
+          <Route path="/how-it-works/what-to-expect" element={<WhatToExpectPage />} />
         </Routes>
       </main>
       <Footer />
