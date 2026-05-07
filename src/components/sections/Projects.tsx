@@ -48,7 +48,7 @@ const projects = [
     category: 'SaaS Startup',
     description: 'Content, nurture, and AI-driven outreach rebuilt their acquisition pipeline at 38% lower CAC within a quarter.',
     image: '🚀',
-    backgroundImage: '/images/plumbing-bg.jpg',
+    backgroundImage: '/images/plumbing-bg.webp',
     gradient: 'from-green-400 to-emerald-500',
     stats: [
       { icon: TrendingUp, label: 'CAC Reduction', value: '-38%' },

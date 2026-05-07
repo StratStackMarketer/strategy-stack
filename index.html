@@ -1,7 +1,112 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google Analytics 4 (GA4) -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Preload critical font -->
+    <link rel="preload" href="/fonts/Modak-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Primary Meta Tags -->
+    <title>Strategy Stack | AI-Powered Marketing for High-Consideration Businesses</title>
+    <meta name="title" content="Strategy Stack | AI-Powered Marketing for High-Consideration Businesses" />
+    <meta name="description" content="Strategy Stack delivers AI-powered marketing for businesses with high-consideration buyers — Home Services, Property Management, Automotive, Retail & SaaS. Enterprise results at local business prices." />
+    <meta name="keywords" content="AI marketing agency Indianapolis, home services marketing, property management marketing, automotive marketing, SaaS marketing, retail marketing, AI lead generation, digital marketing Indianapolis" />
+    <meta name="author" content="Strategy Stack" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://strategystackai.com/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://strategystackai.com/" />
+    <meta property="og:title" content="Strategy Stack | AI Marketing for High-Consideration Businesses" />
+    <meta property="og:description" content="AI-powered marketing for businesses where every customer decision matters — Home Services, Property Management, Automotive, Retail & SaaS. Enterprise results at local prices." />
+    <meta property="og:image" content="https://strategystackai.com/images/og-image.png" />
+    <meta property="og:site_name" content="Strategy Stack" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://strategystackai.com/" />
+    <meta name="twitter:title" content="Strategy Stack | AI Marketing for High-Consideration Businesses" />
+    <meta name="twitter:description" content="AI-powered marketing for businesses where every customer decision matters — Home Services, Property Management, Automotive, Retail & SaaS. Enterprise results at local prices." />
+    <meta name="twitter:image" content="https://strategystackai.com/images/og-image.png" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://strategystackai.com/#organization",
+          "name": "Strategy Stack",
+          "url": "https://strategystackai.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://strategystackai.com/images/logo-full.png"
+          },
+          "description": "AI-powered marketing agency serving businesses with high-consideration buyers across Home Services, Property Management, Automotive, Retail, and SaaS",
+          "areaServed": [
+            { "@type": "City", "name": "Indianapolis", "containedInPlace": { "@type": "State", "name": "Indiana" } },
+            { "@type": "Country", "name": "United States" }
+          ],
+          "serviceType": ["AI Marketing", "Digital Marketing", "SEO", "Lead Generation", "Marketing Automation", "Content Marketing"]
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://strategystackai.com/#localbusiness",
+          "name": "Strategy Stack",
+          "image": "https://strategystackai.com/images/logo-full.png",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Indianapolis",
+            "addressRegion": "IN",
+            "addressCountry": "US"
+          },
+          "priceRange": "$$",
+          "telephone": "(317) 273-3916",
+          "email": "hello@strategystackai.com"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://strategystackai.com/#website",
+          "url": "https://strategystackai.com",
+          "name": "Strategy Stack",
+          "publisher": { "@id": "https://strategystackai.com/#organization" }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Google Tag Manager (manages GA4 — single analytics load) -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NGCS7KXV');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- VWO: deferred to avoid render blocking -->
+    <script defer type='text/javascript' id='vwoCode' src="https://dev.visualwebsiteoptimizer.com/j.php?a=1211819"></script>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGCS7KXV"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- GHL Booking Widget -->
+    <script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
+  </body>
+</html>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0W3QQ4K3DF"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
