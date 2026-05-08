@@ -314,10 +314,24 @@ export function ProductsPage() {
           </div>
 
           {/* Works-together callout */}
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto text-center p-8 bg-white/5 border-3 border-white/20">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto text-center p-8 bg-white/5 border-3 border-white/20 mb-12">
             <h3 className="text-2xl font-bold mb-3">Each product amplifies the others</h3>
             <p className="text-gray-400">Use any one standalone or combine them all. Voice Receptionist captures calls. Follow-Up Agent catches digital leads. Chatbot works the website. Reactivation revives the database. Together: no lead goes untouched.</p>
           </motion.div>
+
+          {/* Real result callouts */}
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="card-brutal bg-yellow-400 text-black p-6">
+              <div className="text-4xl font-heading mb-2">32 leads</div>
+              <p className="text-sm font-bold uppercase tracking-wider mb-3">HVAC client — month one</p>
+              <p className="text-gray-900">Lead Follow-Up Agent recovered 32 inbound leads in the first 30 days that would have otherwise gone unanswered.</p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="card-brutal bg-cyan-400 text-black p-6">
+              <div className="text-4xl font-heading mb-2">267 leads</div>
+              <p className="text-sm font-bold uppercase tracking-wider mb-3">Auto dealership — after-hours capture</p>
+              <p className="text-gray-900">Website Chatbot captured 267 after-hours leads over 30 days that previously had no response mechanism.</p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -382,7 +396,7 @@ export function ProductsPage() {
             { q: 'Do I need all four?', a: 'No. Each works standalone. Most clients start with the Follow-Up Agent — broadest impact, fastest results — then add products based on their gaps.' },
             { q: 'How long does setup take?', a: 'Most products are live within 48–72 hours of your onboarding call. We configure everything — you provide the business context.' },
             { q: 'Do the AI agents sound robotic?', a: 'No. Every agent is trained on your business — services, tone, FAQs. They sound like a knowledgeable team member, not a generic bot.' },
-            { q: 'What CRMs do you integrate with?', a: 'GoHighLevel is our primary platform. If you use something else, ask us — integrations are handled case by case.' },
+            { q: 'What CRMs do you integrate with?', a: 'We can work with almost any CRM platform — using existing integrations, custom tool/function calls, or by quickly spinning up something new. If all else fails, we work with manual export/import files as a fallback.' },
             { q: 'Can I try before committing?', a: 'Start with a free audit. It shows exactly how each product would impact your lead flow before you invest anything.' },
           ].map((faq, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="mb-4 p-6 bg-white border-3 border-black brutal-shadow-sm">

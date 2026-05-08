@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Zap, Clock, Users, BarChart3, CheckCircle, XCircle, ArrowRight, Bot, Phone, Mail, TrendingUp } from 'lucide-react';
+import { Zap, Users, BarChart3, CheckCircle, XCircle, ArrowRight, Bot, Phone, Mail, TrendingUp } from 'lucide-react';
 import { AnimatedGrid } from '../components/ui/AnimatedGrid';
 import { CloudGraphics } from '../components/ui/CloudGraphics';
 import { Contact } from '../components/sections';
