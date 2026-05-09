@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "book-audit",
+      "type": "skill-md",
+      "description": "Book a free AI-powered marketing audit with Strategy Stack. Covers SEO, paid media, local presence, and lead generation for Home Services, Property Management, Automotive, Retail, and SaaS businesses.",
+      "url": "https://strategystackai.com/.well-known/agent-skills/book-audit/SKILL.md",
+      "digest": "sha256:8fbe5243fe87f0955ac4f037a7e780cad319e1af026adf1612424c2f8bfcf3a8"
+    }
+  ]
+}

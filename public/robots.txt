@@ -4,6 +4,10 @@
 User-agent: *
 Allow: /
 
+# AI Content Usage Preferences (Content Signals)
+# https://contentsignals.org/
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+
 # Sitemap location
 Sitemap: https://strategystackai.com/sitemap.xml
 

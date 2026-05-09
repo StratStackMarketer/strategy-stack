@@ -1,0 +1,24 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://strategystackai.com",
+      "service-doc": [
+        {
+          "href": "https://strategystackai.com/.well-known/agent-skills/index.json",
+          "type": "application/json"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://strategystackai.com/.well-known/agent-skills/book-audit/SKILL.md",
+          "type": "text/markdown"
+        }
+      ],
+      "type": [
+        {
+          "href": "https://strategystackai.com"
+        }
+      ]
+    }
+  ]
+}
