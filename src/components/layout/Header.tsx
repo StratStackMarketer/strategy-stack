@@ -1,48 +1,100 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Home, Building2, Car, ShoppingBag, Rocket } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const industries = [
-  { label: 'Home Services', href: '/home-services', icon: Home },
-  { label: 'Property Management', href: '/property-management', icon: Building2 },
-  { label: 'Automotive', href: '/automotive', icon: Car },
-  { label: 'Retail', href: '/retail', icon: ShoppingBag },
-  { label: 'SaaS Startups', href: '/saas-startups', icon: Rocket },
+type NavChild = {
+  label: string;
+  href: string;
+};
+
+type NavItem = {
+  label: string;
+  href?: string;
+  children?: NavChild[];
+};
+
+const navItems: NavItem[] = [
+  {
+    label: 'What We Do',
+    children: [
+      { label: 'Products', href: '/products' },
+      { label: 'Services', href: '/services' },
+      { label: 'Solutions', href: '/solutions' },
+    ],
+  },
+  {
+    label: 'How It Works',
+    children: [
+      { label: 'Free Marketing Audits', href: '/how-it-works/audits' },
+      { label: 'AI & Automation', href: '/how-it-works/ai-automation' },
+      { label: 'What to Expect', href: '/how-it-works/what-to-expect' },
+    ],
+  },
+  {
+    label: 'Industries',
+    children: [
+      { label: 'Home Services', href: '/home-services' },
+      { label: 'Property Management', href: '/property-management' },
+      { label: 'Automotive', href: '/automotive' },
+      { label: 'Retail', href: '/retail' },
+      { label: 'SaaS Startups', href: '/saas-startups' },
+    ],
+  },
+  {
+    label: 'Pricing & Packaging',
+    href: '/pricing-packaging',
+    children: [
+      { label: 'Solutions', href: '/solutions' },
+      { label: 'Booster Packs', href: '/booster-packs' },
+    ],
+  },
+  {
+    label: 'Resources',
+    href: '/resources',
+    children: [
+      { label: 'Success Stories', href: '/resources/success-stories' },
+      { label: 'Use Cases', href: '/resources/use-cases' },
+      { label: 'Tools', href: '/resources/tools' },
+      { label: 'Blog', href: '/blog' },
+    ],
+  },
 ];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isIndustriesOpen, setIsIndustriesOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const navRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsIndustriesOpen(false);
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setActiveDropdown(null);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
-    setIsIndustriesOpen(false);
+    setActiveDropdown(null);
+    setMobileExpanded(null);
   }, [location.pathname]);
+
+  const isGroupActive = (item: NavItem) =>
+    (item.href && location.pathname === item.href) ||
+    item.children?.some((c) => location.pathname === c.href);
 
   return (
     <header
@@ -54,107 +106,109 @@ export function Header() {
       )}
     >
       <div className="container mx-auto px-6">
-        <nav className="flex items-center h-20">
+        <nav className="flex items-center h-20" ref={navRef}>
           {/* Logo */}
-          <Link to="/" className="flex items-center -ml-22">
-            {/* Mobile: Triangle logo only */}
+          <Link to="/" className="flex items-center -ml-22 shrink-0">
             <img
               src="/images/logo-triangle.png"
               alt="Strategy Stack"
-              className="h-12 w-auto md:hidden"
+              className="h-12 w-auto lg:hidden"
             />
-            {/* Desktop/Tablet: Full logo */}
             <img
               src="/images/logo-full.png"
               alt="Strategy Stack"
-              className="h-15 w-auto hidden md:block"
+              className="h-15 w-auto hidden lg:block"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8 ml-auto -mr-20">
-            {/* Industries Dropdown */}
-            <div className="relative" ref={dropdownRef}>
-              <button
-                onClick={() => setIsIndustriesOpen(!isIndustriesOpen)}
-                className="flex items-center gap-1 font-bold text-sm uppercase tracking-wide hover:text-primary transition-colors"
+          <div className="hidden lg:flex items-center gap-5 xl:gap-6 ml-auto -mr-20">
+            {navItems.map((item) => (
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => item.children && setActiveDropdown(item.label)}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                Industries
-                <ChevronDown 
-                  className={cn(
-                    "h-4 w-4 transition-transform",
-                    isIndustriesOpen && "rotate-180"
-                  )} 
-                />
-              </button>
-
-              <AnimatePresence>
-                {isIndustriesOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-2 w-64 bg-white border-3 border-black brutal-shadow-md"
+                {/* Label: Link if has href, button otherwise */}
+                {item.href ? (
+                  <Link
+                    to={item.href}
+                    className={cn(
+                      'flex items-center gap-1 font-bold text-sm uppercase tracking-wide hover:text-primary transition-colors whitespace-nowrap',
+                      isGroupActive(item) && 'text-primary'
+                    )}
                   >
-                    {industries.map((industry) => {
-                      const Icon = industry.icon;
-                      const isActive = location.pathname === industry.href;
-                      return (
+                    {item.label}
+                    {item.children && (
+                      <ChevronDown
+                        className={cn(
+                          'h-3.5 w-3.5 transition-transform shrink-0',
+                          activeDropdown === item.label && 'rotate-180'
+                        )}
+                      />
+                    )}
+                  </Link>
+                ) : (
+                  <button
+                    className={cn(
+                      'flex items-center gap-1 font-bold text-sm uppercase tracking-wide hover:text-primary transition-colors whitespace-nowrap',
+                      isGroupActive(item) && 'text-primary'
+                    )}
+                  >
+                    {item.label}
+                    {item.children && (
+                      <ChevronDown
+                        className={cn(
+                          'h-3.5 w-3.5 transition-transform shrink-0',
+                          activeDropdown === item.label && 'rotate-180'
+                        )}
+                      />
+                    )}
+                  </button>
+                )}
+
+                {/* Dropdown */}
+                <AnimatePresence>
+                  {item.children && activeDropdown === item.label && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute top-full left-0 mt-2 min-w-[200px] bg-white border-3 border-black brutal-shadow-md z-50"
+                    >
+                      {item.children.map((child) => (
                         <Link
-                          key={industry.href}
-                          to={industry.href}
+                          key={child.href}
+                          to={child.href}
                           className={cn(
-                            "flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0",
-                            isActive && "bg-primary/10 text-primary"
+                            'block px-4 py-3 text-sm font-medium hover:bg-gray-50 hover:text-primary transition-colors border-b border-gray-100 last:border-b-0 whitespace-nowrap',
+                            location.pathname === child.href && 'bg-primary/10 text-primary font-bold'
                           )}
                         >
-                          <Icon className="h-5 w-5" />
-                          <span className="font-medium">{industry.label}</span>
+                          {child.label}
                         </Link>
-                      );
-                    })}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
 
-            <Link
-              to="/pricing"
-              className="font-bold text-sm uppercase tracking-wide hover:text-primary transition-colors relative group"
-            >
-              Pricing
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-            </Link>
-
-            <Link
-              to="/30-day-blitz"
-              className="font-bold text-sm uppercase tracking-wide hover:text-yellow-500 transition-colors relative group text-yellow-600"
-            >
-              30-Day Blitz
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 transition-all duration-300 group-hover:w-full" />
-            </Link>
-
+            {/* Book a Call CTA */}
             <a
               href="#contact"
-              className="font-bold text-sm uppercase tracking-wide hover:text-primary transition-colors relative group"
+              className="btn-brutal btn-brutal-primary text-sm whitespace-nowrap shrink-0"
             >
-              Contact
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+              Book a Call
             </a>
-
-            <Link
-              to="/pricing"
-              className="btn-brutal btn-brutal-primary text-sm"
-            >
-              Get Started
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden ml-auto p-2 brutal-border bg-white brutal-shadow-sm"
+            className="lg:hidden ml-auto p-2 brutal-border bg-white brutal-shadow-sm"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -169,59 +223,91 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t-3 border-b-3 border-black"
+            transition={{ duration: 0.2 }}
+            className="lg:hidden bg-white border-t-3 border-b-3 border-black overflow-hidden"
           >
-            <div className="container mx-auto px-6 py-6">
-              <div className="flex flex-col gap-2">
-                {/* Industries Section */}
-                <div className="border-b-2 border-gray-200 pb-4 mb-2">
-                  <span className="text-xs uppercase tracking-wider text-gray-500 mb-2 block">Industries</span>
-                  {industries.map((industry) => {
-                    const Icon = industry.icon;
-                    const isActive = location.pathname === industry.href;
-                    return (
+            <div className="container mx-auto px-6 py-4">
+              <div className="flex flex-col">
+                {navItems.map((item) => (
+                  <div key={item.label} className="border-b border-gray-100 last:border-b-0">
+                    {item.children ? (
+                      <>
+                        <button
+                          onClick={() =>
+                            setMobileExpanded(mobileExpanded === item.label ? null : item.label)
+                          }
+                          className={cn(
+                            'w-full flex items-center justify-between py-3 font-bold text-sm uppercase tracking-wide',
+                            isGroupActive(item) && 'text-primary'
+                          )}
+                        >
+                          {/* If item has its own href, tapping the label navigates */}
+                          {item.href ? (
+                            <Link
+                              to={item.href}
+                              onClick={(e) => e.stopPropagation()}
+                              className="hover:text-primary transition-colors"
+                            >
+                              {item.label}
+                            </Link>
+                          ) : (
+                            <span>{item.label}</span>
+                          )}
+                          <ChevronDown
+                            className={cn(
+                              'h-4 w-4 transition-transform',
+                              mobileExpanded === item.label && 'rotate-180'
+                            )}
+                          />
+                        </button>
+
+                        <AnimatePresence>
+                          {mobileExpanded === item.label && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.15 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pb-3 pl-4 flex flex-col gap-1">
+                                {item.children.map((child) => (
+                                  <Link
+                                    key={child.href}
+                                    to={child.href}
+                                    className={cn(
+                                      'py-2 text-sm font-medium text-gray-600 hover:text-primary transition-colors',
+                                      location.pathname === child.href && 'text-primary font-bold'
+                                    )}
+                                  >
+                                    {child.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    ) : (
                       <Link
-                        key={industry.href}
-                        to={industry.href}
+                        to={item.href!}
                         className={cn(
-                          "flex items-center gap-3 py-2 font-medium",
-                          isActive && "text-primary"
+                          'block py-3 font-bold text-sm uppercase tracking-wide hover:text-primary transition-colors',
+                          location.pathname === item.href && 'text-primary'
                         )}
                       >
-                        <Icon className="h-5 w-5" />
-                        {industry.label}
+                        {item.label}
                       </Link>
-                    );
-                  })}
-                </div>
-
-                <Link
-                  to="/pricing"
-                  className="font-bold text-lg uppercase tracking-wide py-2 border-b-2 border-gray-200"
-                >
-                  Pricing
-                </Link>
-
-                <Link
-                  to="/30-day-blitz"
-                  className="font-bold text-lg uppercase tracking-wide py-2 border-b-2 border-gray-200 text-yellow-600"
-                >
-                  30-Day Blitz
-                </Link>
+                    )}
+                  </div>
+                ))}
 
                 <a
                   href="#contact"
-                  className="font-bold text-lg uppercase tracking-wide py-2 border-b-2 border-gray-200"
-                >
-                  Contact
-                </a>
-
-                <Link
-                  to="/pricing"
                   className="btn-brutal btn-brutal-primary text-center mt-4"
                 >
-                  Get Started
-                </Link>
+                  Book a Call
+                </a>
               </div>
             </div>
           </motion.div>

@@ -39,7 +39,7 @@ const footerLinks = {
     { label: 'Products', href: '/products' },
     { label: 'Services', href: '/services' },
     { label: 'Solutions', href: '/solutions' },
-    { label: 'Pricing & Packaging', href: '/pricing' },
+    { label: 'Pricing & Packaging', href: '/pricing-packaging' },
     { label: 'Blog', href: '/blog' },
   ],
 };
