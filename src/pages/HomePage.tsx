@@ -99,11 +99,9 @@ function HomeHero() {
             variants={itemVariants}
             className="text-5xl md:text-7xl lg:text-8xl font-heading mb-6 leading-none"
           >
-            Premium Marketing.
+            Your Competitors Are Winning.
             <br />
-            <span className="text-primary">Unreal Prices.</span>
-            <br />
-            <span className="text-gray-500 text-4xl md:text-5xl lg:text-6xl">Real ROI.</span>
+            <span className="text-primary">Your Marketing Is Why.</span>
           </motion.h1>
 
           <motion.p
