@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import { ArrowRight, Zap, DollarSign, Target, Shield } from 'lucide-react';
 import { trackCTA } from '@/lib/analytics';
 import { AnimatedGrid } from '../components/ui/AnimatedGrid';
@@ -58,6 +59,105 @@ const itemVariants = {
   },
 };
 
+// ─── Kinetic Services Section ──────────────────────────────────────────────
+
+const services = [
+  { number: '01', label: 'AI Automation',         color: '#FCD34D', spinDir: -1 },
+  { number: '02', label: 'Lead Generation',        color: '#06B6D4', spinDir:  1 },
+  { number: '03', label: 'Conversion Optimization',color: '#ffffff', spinDir: -1 },
+];
+
+function ServiceLine({
+  number,
+  label,
+  color,
+  spinDir,
+  index,
+}: {
+  number: string;
+  label: string;
+  color: string;
+  spinDir: number;
+  index: number;
+}) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.6 });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ rotate: spinDir * 180, opacity: 0, scale: 0.8 }}
+      animate={inView ? { rotate: 0, opacity: 1, scale: 1 } : {}}
+      transition={{
+        duration: 0.75,
+        delay: index * 0.18,
+        ease: [0.12, 0, 0.39, 0],
+      }}
+      className="flex items-baseline gap-4 md:gap-8 border-b border-white/10 py-5 md:py-7 last:border-0 cursor-default select-none"
+      style={{ transformOrigin: 'left center' }}
+      whileHover={{
+        rotate: spinDir * -4,
+        transition: { type: 'spring', stiffness: 300, damping: 12 },
+      }}
+    >
+      <span className="font-mono text-xs md:text-sm text-white/30 w-6 md:w-8 shrink-0 pt-2">
+        {number}
+      </span>
+      <span
+        className="font-heading leading-none text-5xl sm:text-6xl md:text-8xl lg:text-9xl"
+        style={{ color }}
+      >
+        {label}
+      </span>
+    </motion.div>
+  );
+}
+
+function KineticServices() {
+  return (
+    <section className="bg-black border-y-4 border-black overflow-hidden py-12 md:py-16">
+      <div className="container mx-auto px-6 md:px-10">
+        {/* Section label */}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-white/40 text-xs font-mono uppercase tracking-widest mb-8"
+        >
+          What We Do
+        </motion.p>
+
+        {/* Kinetic lines */}
+        <div>
+          {services.map((s, i) => (
+            <ServiceLine key={s.label} {...s} index={i} />
+          ))}
+        </div>
+
+        {/* Footer CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-10 flex items-center gap-4"
+        >
+          <a
+            href="/services"
+            onClick={() => trackCTA('Kinetic Services - See How', 'Kinetic Section')}
+            className="inline-flex items-center gap-2 text-white border-2 border-white px-6 py-3 font-bold text-sm uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-200"
+          >
+            See How It Works <ArrowRight className="h-4 w-4" />
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Hero ─────────────────────────────────────────────────────────────────
+
 function HomeHero() {
   return (
     <section
@@ -112,16 +212,16 @@ function HomeHero() {
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="#experience" 
+            <a
+              href="#experience"
               onClick={() => trackCTA('Hero - See Our Approach', 'Home Hero')}
               className="btn-brutal btn-brutal-primary text-lg px-8 py-4"
             >
               See Our Approach
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
-            <a 
-              href="/pricing" 
+            <a
+              href="/pricing"
               onClick={() => trackCTA('Hero - View Pricing', 'Home Hero')}
               className="btn-brutal btn-brutal-white text-lg px-8 py-4"
             >
@@ -170,15 +270,18 @@ function HomeHero() {
   );
 }
 
+// ─── Page ─────────────────────────────────────────────────────────────────
+
 export function HomePage() {
   return (
     <>
       <HomeHero />
+      <KineticServices />
       <IndustriesShowcase />
       <ClientExperience />
       <Testimonials />
       <Pricing />
-      <FAQ 
+      <FAQ
         title="Frequently Asked Questions"
         subtitle="Got questions? We've got answers. No BS."
         faqs={universalFAQs}
