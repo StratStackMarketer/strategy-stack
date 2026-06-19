@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Zap, DollarSign, Target, Shield } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
 import { trackCTA } from '@/lib/analytics';
 import { AnimatedGrid } from '../components/ui/AnimatedGrid';
 import { CloudGraphics } from '../components/ui/CloudGraphics';
@@ -58,6 +59,136 @@ const itemVariants = {
   },
 };
 
+// ─── Reveal Headline Interaction ──────────────────────────────────────────────
+// Part 1: "Your Competitors Are Winning." (black, always visible)
+// Part 2: "Your Marketing Is Why." (primary/purple, revealed as cursor sweeps L→R)
+function RevealHeadline() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [revealPct, setRevealPct] = useState(0);
+  const [cursorLeft, setCursorLeft] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+  const targetPctRef = useRef(0);
+  const currentPctRef = useRef(0);
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const tick = () => {
+      const diff = targetPctRef.current - currentPctRef.current;
+      if (Math.abs(diff) > 0.05) {
+        currentPctRef.current += diff * 0.14;
+        setRevealPct(currentPctRef.current);
+      }
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
+    targetPctRef.current = pct;
+    setCursorLeft(pct);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    targetPctRef.current = 0;
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={handleMouseLeave}
+      className="relative block text-center select-none"
+      style={{ cursor: 'text' }}
+    >
+      {/* Part 1 — base layer, always visible */}
+      <span className="text-black">Your Competitors Are Winning.</span>
+
+      {/* Part 2 — centered overlay, revealed left-to-right via clip-path */}
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 flex items-center justify-center text-primary pointer-events-none whitespace-nowrap"
+        style={{
+          clipPath: `inset(0 ${100 - revealPct}% 0 0)`,
+          WebkitClipPath: `inset(0 ${100 - revealPct}% 0 0)`,
+        }}
+      >
+        Your Marketing Is Why.
+      </span>
+
+      {/* Blinking text cursor — appears at mouse position */}
+      {isHovering && (
+        <span
+          aria-hidden="true"
+          className="absolute top-[5%] bottom-[5%] pointer-events-none"
+          style={{
+            left: `${cursorLeft}%`,
+            width: '3px',
+            background: 'black',
+            animation: 'textCursorBlink 1s step-end infinite',
+            transform: 'translateX(-1px)',
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
+
+// ─── Marquee Banner ───────────────────────────────────────────────────────────
+// Angled scrolling strip — inserted between Hero and Industries sections.
+// Content rotates through 3 key offers. Update items array to change copy.
+const marqueeItems = [
+  { icon: '🎯', text: 'Free Marketing Audit — No Strings Attached' },
+  { icon: '🤖', text: 'AI Agents — First 30 Days Free' },
+  { icon: '🛡️', text: 'Results Guaranteed or We Work Free' },
+];
+// Duplicate 4x for seamless infinite loop at any scroll speed
+const marqueeTrack = [...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems];
+
+function MarqueeBanner() {
+  return (
+    <div
+      className="relative overflow-hidden"
+      style={{ zIndex: 15, margin: '-4px 0' }}
+      aria-hidden="true"
+    >
+      {/* Rotated container — negative horizontal margin bleeds past viewport edges */}
+      <div
+        className="bg-secondary border-t-3 border-b-3 border-black py-4 overflow-hidden"
+        style={{
+          transform: 'rotate(-2deg)',
+          margin: '16px -60px',
+        }}
+      >
+        {/* Scrolling track */}
+        <div
+          className="flex items-center gap-0 whitespace-nowrap"
+          style={{ animation: 'marquee 28s linear infinite' }}
+        >
+          {marqueeTrack.map((item, i) => (
+            <span
+              key={i}
+              className="inline-flex items-center gap-3 font-bold text-black uppercase tracking-widest text-sm px-6"
+            >
+              <span className="text-base">{item.icon}</span>
+              {item.text}
+              <span className="opacity-30 ml-6 text-xs">✦</span>
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function HomeHero() {
   return (
     <section
@@ -91,13 +222,12 @@ function HomeHero() {
             </span>
           </motion.div>
 
+          {/* Reveal headline — Part 1 black, Part 2 revealed purple on hover sweep */}
           <motion.h1
             variants={itemVariants}
             className="text-5xl md:text-7xl lg:text-8xl font-heading mb-6 leading-none"
           >
-            Your Competitors Are Winning.
-            <br />
-            <span className="text-primary">Your Marketing Is Why.</span>
+            <RevealHeadline />
           </motion.h1>
 
           <motion.p
@@ -165,6 +295,7 @@ export function HomePage() {
   return (
     <>
       <HomeHero />
+      <MarqueeBanner />
       <IndustriesShowcase />
       <ClientExperience />
       <Testimonials />

@@ -106,9 +106,10 @@ export function Header() {
       )}
     >
       <div className="container mx-auto px-6">
-        <nav className="flex items-center h-20" ref={navRef}>
-          {/* Logo */}
-          <Link to="/" className="flex items-center -ml-22 shrink-0">
+        {/* Logo anchored left, nav items evenly spaced, Book a Call anchored right */}
+        <nav className="flex items-center justify-between h-20" ref={navRef}>
+          {/* Logo — anchored top-left, no artificial offsets */}
+          <Link to="/" className="flex items-center shrink-0">
             <img
               src="/images/logo-triangle.png"
               alt="Strategy Stack"
@@ -121,8 +122,8 @@ export function Header() {
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-5 xl:gap-6 ml-auto -mr-20">
+          {/* Desktop Navigation — consistent gap between all items including logo buffer */}
+          <div className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
               <div
                 key={item.label}
@@ -130,7 +131,6 @@ export function Header() {
                 onMouseEnter={() => item.children && setActiveDropdown(item.label)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                {/* Label: Link if has href, button otherwise */}
                 {item.href ? (
                   <Link
                     to={item.href}
@@ -208,7 +208,7 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden ml-auto p-2 brutal-border bg-white brutal-shadow-sm"
+            className="lg:hidden p-2 brutal-border bg-white brutal-shadow-sm"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -241,7 +241,6 @@ export function Header() {
                             isGroupActive(item) && 'text-primary'
                           )}
                         >
-                          {/* If item has its own href, tapping the label navigates */}
                           {item.href ? (
                             <Link
                               to={item.href}

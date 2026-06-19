@@ -73,7 +73,7 @@ export function Footer() {
               <img
                 src="/images/logo-full.png"
                 alt="Strategy Stack"
-                className="h-12 mb-6 brightness-0 invert"
+                className="h-12 mb-6"
               />
               <p className="text-gray-400 text-[11px] mb-6 max-w-sm">
                 AI-powered marketing for businesses with high-consideration buyers. Home Services, Property Management, Automotive, Retail & SaaS.
