@@ -243,7 +243,7 @@ function HomeHero() {
           {/* Reveal headline — Part 1 black, Part 2 revealed purple on hover sweep */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl lg:text-8xl font-heading mb-6 leading-none"
+            className="text-5xl md:text-7xl lg:text-8xl font-heading mb-6 leading-none relative w-[90vw] left-1/2 -translate-x-1/2"
           >
             <RevealHeadline />
           </motion.h1>
