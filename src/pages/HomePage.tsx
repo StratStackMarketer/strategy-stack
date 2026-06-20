@@ -105,13 +105,26 @@ function RevealHeadline() {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={handleMouseLeave}
-      className="relative block text-center select-none"
-      style={{ cursor: 'text' }}
+      className="relative block select-none"
+      // py-8 extends the hover-sensitive zone ~30% beyond the text height
+      style={{ cursor: 'text', padding: '2rem 0' }}
     >
-      {/* Part 1 — base layer, always visible */}
-      <span className="text-black">Your Competitors Are Winning.</span>
+      {/* Spacer span — holds the line height so the div sizes correctly */}
+      <span className="invisible" aria-hidden="true">Your Competitors Are Winning.</span>
 
-      {/* Part 2 — centered overlay, revealed left-to-right via clip-path */}
+      {/* Part 1 — clips away from the LEFT as cursor sweeps right */}
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 flex items-center justify-center text-black pointer-events-none whitespace-nowrap"
+        style={{
+          clipPath: `inset(0 0 0 ${revealPct}%)`,
+          WebkitClipPath: `inset(0 0 0 ${revealPct}%)`,
+        }}
+      >
+        Your Competitors Are Winning.
+      </span>
+
+      {/* Part 2 — reveals from the LEFT as cursor sweeps right */}
       <span
         aria-hidden="true"
         className="absolute inset-0 flex items-center justify-center text-primary pointer-events-none whitespace-nowrap"
@@ -123,11 +136,11 @@ function RevealHeadline() {
         Your Marketing Is Why.
       </span>
 
-      {/* Blinking text cursor — appears at mouse position */}
+      {/* Blinking text cursor at the sweep boundary */}
       {isHovering && (
         <span
           aria-hidden="true"
-          className="absolute top-[5%] bottom-[5%] pointer-events-none"
+          className="absolute top-[15%] bottom-[15%] pointer-events-none"
           style={{
             left: `${cursorLeft}%`,
             width: '3px',
