@@ -72,6 +72,10 @@ function RevealHeadline() {
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    // rAF lerp loop
     const tick = () => {
       const diff = targetPctRef.current - currentPctRef.current;
       if (Math.abs(diff) > 0.05) {
@@ -81,41 +85,39 @@ function RevealHeadline() {
       rafRef.current = requestAnimationFrame(tick);
     };
     rafRef.current = requestAnimationFrame(tick);
+
+    // Vanilla JS listeners bypass Framer Motion's synthetic event interception
+    const onMove = (e: MouseEvent) => {
+      const rect = el.getBoundingClientRect();
+      const pct = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
+      targetPctRef.current = pct;
+      setCursorLeft(pct);
+    };
+    const onEnter = () => setIsHovering(true);
+    const onLeave = () => { setIsHovering(false); targetPctRef.current = 0; };
+
+    el.addEventListener('mousemove', onMove);
+    el.addEventListener('mouseenter', onEnter);
+    el.addEventListener('mouseleave', onLeave);
+
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      el.removeEventListener('mousemove', onMove);
+      el.removeEventListener('mouseenter', onEnter);
+      el.removeEventListener('mouseleave', onLeave);
     };
   }, []);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const pct = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
-    targetPctRef.current = pct;
-    setCursorLeft(pct);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovering(false);
-    targetPctRef.current = 0;
-  };
 
   return (
     <div
       ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={handleMouseLeave}
-      className="relative block select-none"
-      // py-8 extends the hover-sensitive zone ~30% beyond the text height
-      style={{ cursor: 'text', padding: '2rem 0' }}
+      className="relative block select-none py-3"
+      style={{ cursor: 'text' }}
     >
-      {/* Spacer span — holds the line height so the div sizes correctly */}
-      <span className="invisible" aria-hidden="true">Your Competitors Are Winning.</span>
-
-      {/* Part 1 — clips away from the LEFT as cursor sweeps right */}
+      {/* Part 1 — block with text-center so it wraps identically to Part 2.
+          Clips from LEFT as cursor sweeps right (disappears behind the line). */}
       <span
-        aria-hidden="true"
-        className="absolute inset-0 flex items-center justify-center text-black pointer-events-none whitespace-nowrap"
+        className="block text-center text-black"
         style={{
           clipPath: `inset(0 0 0 ${revealPct}%)`,
           WebkitClipPath: `inset(0 0 0 ${revealPct}%)`,
@@ -124,10 +126,11 @@ function RevealHeadline() {
         Your Competitors Are Winning.
       </span>
 
-      {/* Part 2 — reveals from the LEFT as cursor sweeps right */}
+      {/* Part 2 — absolute overlay, same layout as Part 1.
+          Reveals from LEFT as cursor sweeps right. */}
       <span
         aria-hidden="true"
-        className="absolute inset-0 flex items-center justify-center text-primary pointer-events-none whitespace-nowrap"
+        className="absolute inset-0 block text-center text-primary pointer-events-none"
         style={{
           clipPath: `inset(0 ${100 - revealPct}% 0 0)`,
           WebkitClipPath: `inset(0 ${100 - revealPct}% 0 0)`,
@@ -136,13 +139,15 @@ function RevealHeadline() {
         Your Marketing Is Why.
       </span>
 
-      {/* Blinking text cursor at the sweep boundary */}
+      {/* Blinking cursor at sweep boundary */}
       {isHovering && (
         <span
           aria-hidden="true"
-          className="absolute top-[15%] bottom-[15%] pointer-events-none"
+          className="absolute pointer-events-none"
           style={{
             left: `${cursorLeft}%`,
+            top: '5%',
+            bottom: '5%',
             width: '3px',
             background: 'black',
             animation: 'textCursorBlink 1s step-end infinite',
