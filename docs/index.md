@@ -52,7 +52,7 @@ This directory contains key Strategy Stack business documents pulled from Notion
 - **Scale:** $1,495/mo
 
 ### Contact
-- **Phone:** (317) 273-3916
+- **Phone:** (574) 392-0253
 - **Email:** russ@strategystackmarketing.com
 - **Website:** https://strategystackai.com
 

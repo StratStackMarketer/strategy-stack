@@ -307,7 +307,7 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-white/60">Text or Call</p>
-                  <p className="font-bold text-lg">(317) 273-3916</p>
+                  <p className="font-bold text-lg">(574) 392-0253</p>
                 </div>
               </div>
 

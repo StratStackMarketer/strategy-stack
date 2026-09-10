@@ -77,7 +77,7 @@ export function TermsPage() {
               </p>
               <div className="mt-4 space-y-1">
                 <p><strong>Email:</strong> russ@strategystackmarketing.com</p>
-                <p><strong>Phone:</strong> (317) 273-3916</p>
+                <p><strong>Phone:</strong> (574) 392-0253</p>
                 <p><strong>Address:</strong> Indianapolis, IN</p>
               </div>
             </section>
