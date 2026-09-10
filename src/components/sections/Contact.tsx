@@ -307,7 +307,12 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-white/60">Text or Call</p>
-                  <p className="font-bold text-lg">(574) 392-0253</p>
+                  <a
+                    href="tel:+15743920253"
+                    className="font-bold text-lg hover:text-secondary transition-colors"
+                  >
+                    (574) 392-0253
+                  </a>
                 </div>
               </div>
 
