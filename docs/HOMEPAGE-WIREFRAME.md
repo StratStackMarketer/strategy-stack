@@ -237,7 +237,7 @@
 │                                                             │
 │      [ Get Your Free Audit ]    [ Schedule a Call ]         │
 │                                                             │
-│              Or email: hello@strategystackai.com            │
+│              Or email: russ@strategystackmarketing.com            │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
